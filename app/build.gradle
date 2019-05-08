@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    signingConfigs {
+        release {
+            storeFile file("release.keystore")
+            storePassword "traxnet"
+            keyAlias "traxnet"
+            keyPassword "traxnet"
+        }
+    }
+
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "ee.traxnet.sample.android"
+
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField "String" , "traxnetSampleAppKey","\"kilkhmaqckffopkpfnacjkobgrgnidkphkcbtmbcdhiokqetigljpnnrbfbnpnhmeikjbq\""
+        buildConfigField "String" , "traxnetVideoZoneId","\"5a5dbd5cc21bf000010d1686\""
+        buildConfigField "String" , "traxnetInterstitialBannerZoneId","\"5a3f5063fca4f000014b70a8\""
+        buildConfigField "String" , "traxnetInterstitialVideoZoneId","\"5af292bef5a56d000196e9c8\""
+        buildConfigField "String" , "traxnetNativeVideoZoneId","\"5953bd064684652dd8fcb02e\""
+        buildConfigField "String" , "traxnetNativeBannerZoneId","\"5953bc774684652dd8fc937e\""
+        buildConfigField "String" , "traxnetVastZoneId","\"5953bb294684652dd8fc4f9f\""
+        buildConfigField "String" , "traxnetStandardBannerZoneId","\"5a28f47539086d0001670416\""
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:customtabs:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    implementation 'ee.traxnet.sdk:traxnet-sdk-android:0.1.1'
+    implementation 'com.google.ads.interactivemedia.v3:interactivemedia:3.8.7'
+    implementation 'com.google.android.gms:play-services-ads:16.0.0'
+}
