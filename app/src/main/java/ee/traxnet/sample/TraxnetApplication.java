@@ -12,7 +12,7 @@ public class TraxnetApplication extends Application {
         super.onCreate();
 
         TraxnetConfiguration config = new TraxnetConfiguration(this);
-        config.setPermissionHandlerMode(TraxnetConfiguration.PERMISSION_HANDLER_DISABLED);
+        config.setDebugMode(true);
         Traxnet.initialize(this, config, BuildConfig.traxnetSampleAppKey);
     }
 }
